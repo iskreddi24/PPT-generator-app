@@ -1,9 +1,8 @@
-// src/api/authService.js
 import axios from "axios";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-console.log("Loaded API base URL:", API_BASE_URL); // <--- MUST show http://localhost:8080
+console.log("AuthService Base URL:", API_BASE_URL);
 
 const authApiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -24,10 +23,7 @@ export const login = async (username, password) => {
       throw new Error("No token returned from server");
     }
   } catch (error) {
-    console.error(
-      "Login error:",
-      error.response?.data || error.message || error
-    );
+    console.error("Login error:", error.response?.data || error.message);
     throw error;
   }
 };
